@@ -39,9 +39,8 @@ for lang in enchant.list_languages():
 while len(results.keys()) < len(enchant.list_languages()):
   #print "Completed Languages:",set(results.keys()) & set(enchant.list_languages())
   time.sleep(1)
-time.sleep(10)
 
-print results
+#print results
 for i in results.keys():
   print i+":",', '.join(results[i])
 
