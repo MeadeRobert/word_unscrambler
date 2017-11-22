@@ -1,24 +1,48 @@
 import sys
 import enchant
+import thread
+import time
 from itertools import permutations
 
-'''
-file = open("corncob_lowercase.txt")
-english = set(word.strip() for word in file.readlines())
-file.close()
-'''
-
+# generate possible words with more then 2 chars O(n!) :(
 perm = [''.join(p) for p in permutations(sys.argv[1])]
-words = set()
+words = set(perm)
+# get all permutations of lesser length than number of letters
 for i in range(2, len(sys.argv[1])):
   words |= set([p[0:i] for p in perm])
-#print words
-#print "last" in english
-#print english
-d = enchant.Dict("en_US")
-english_words = set()
-for i in words:
-  if d.check(i):
-    english_words.add(i)
-print english_words
-#print '\n'.join(english & words)
+
+
+# reference against selected dictionaries to find words
+########################################################
+
+# define common dictionary structure and function for verifying words
+results = {}
+def valid_words(words, lang):
+  valid_words = []
+  dict = enchant.Dict(lang)
+  for i in words:
+    if dict.check(i):
+      valid_words.append(i)
+  print "Completed:", lang
+  results[lang] = valid_words
+  #print valid_words
+
+# run a thread to check against each language
+for lang in enchant.list_languages():
+  try:
+    print "Trying to start thread for", lang
+    thread.start_new_thread(valid_words, (words, lang))
+  except:
+    print "Error: unable to start thread for", lang
+
+# wait for threads
+while len(results.keys()) < len(enchant.list_languages()):
+  #print "Completed Languages:",set(results.keys()) & set(enchant.list_languages())
+  time.sleep(1)
+time.sleep(10)
+
+print results
+for i in results.keys():
+  print i+":",', '.join(results[i])
+
+
