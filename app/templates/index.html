@@ -6,15 +6,20 @@
   <form action="" method="post" name="login">
       {{ form.hidden_tag() }}
       <p>
-        Enter Letters Here (no more than 9):<br>
+        Enter Letters Here (no more than 10):<br>
         {{ form.letters(size=10) }}<br>
       </p>
       <p>
-        Enter Language codes Here
+        Enter Language Codes (Separated by Spaces):<br>
         {{ form.languages(size=80) }}<br>
       </p>
+      <p>Installed Languages (<a href="https://www.w3schools.com/tags/ref_language_codes.asp">ISO 639-1 Codes</a>):<br>
+        {% for lang in languages %}
+        <tb>{{lang}}</tb>
+        {% endfor %}
+      </p>
       <p><input type="submit" value="Unscramble"></p>
-      <h2>Results By Language</h2>
+      <h2>Results By Language:</h2>
       <p> {{ results }} </p>
    </form>
 {% endautoescape %}
