@@ -1,26 +1,32 @@
-{% extends "base.html" %}
+<html>
+  <title>Universal Word Unscrambler</title>
+  <body>
+    <h1>Universal Word Unscramber</h1>
 
-{% block content %}
-{% autoescape false %}
-  <h1>Word Unscrambler</h1>
-  <form action="" method="post" name="login">
-      {{ form.hidden_tag() }}
-      <p>
-        Enter Letters Here (no more than 10):<br>
-        {{ form.letters(size=10) }}<br>
-      </p>
-      <p>
-        Enter Language Codes (Separated by Spaces):<br>
+    {% autoescape false %}
+    <form action="" method="post" name="login">
+        {{ form.hidden_tag() }}
+        <p>
+          <h3>Enter Letters (2-9):</h3><br>
+          {{ form.letters(size=10) }}<br>
+        </p>
+        <p>
+          <h3>Enter Language Codes (Separated by Spaces):</h3><br>
         {{ form.languages(size=80) }}<br>
-      </p>
-      <p>Installed Languages (<a href="https://www.w3schools.com/tags/ref_language_codes.asp">ISO 639-1 Codes</a>):<br>
-        {% for lang in languages %}
-        <tb>{{lang}}</tb>
-        {% endfor %}
-      </p>
-      <p><input type="submit" value="Unscramble"></p>
-      <h2>Results By Language:</h2>
-      <p> {{ results }} </p>
-   </form>
-{% endautoescape %}
-{% endblock %}
+        </p>
+        <p><h3>Installed Languages (<a href="https://www.w3schools.com/tags/ref_language_codes.asp">ISO 639-1 Codes</a>):</h3><br>
+          {% for lang in languages %}
+          <tb>{{lang}}</tb>
+          {% endfor %}
+        </p>
+        <p><input type="submit" value="Unscramble"></p>
+          <h2>Results By Language:</h2>
+        <p> {{ results }} </p>
+        <h2> About: </h2>
+        <p> Universal Word Unscrambler is a web-app, written by Robert Meade (<a href="https://github.com/MeadeRobert">https://github.com/MeadeRobert</a>), that aims to allow anyone to make sense of arbitrary letter combinations that may contain meaning obscured by a language of which they have no knowledge. The program tries to provide as many words or acronyms as it can with little to no concern for false positives. It is thus not a Scrabble word-finder, but a tool to decipher meaning from chaos. It will find sequences, 2-9 characters in length, that are valid spelling combinations in any of the languages specified that are installed on the system. These languages are given above by their ISO 639-1 Codes.<br>
+	  The Universal Word Unscrambler was developed in response to a Dutch word scramble puzzle. The puzzle demonstrated that such a utility for word unscrambling involving arbitrary target languages was not readily available. The challenge involved the letters "nrtoepw" which contained a hidden message, "ontwerp." The hidden message translates to "design" in english, fitting for the puzzle since it was made to show how people sometimes lack the background to interpret meaning in information as part of a freshman Engineering Design class.<br>
+	  Universal Word Unscrambler makes use of python's enchant library and aspell on a debian based linux server to reference letter combinations against system dictionaries. Although it uses a naive approach to the generation of possible words, generationg a list of permutations in O(n!) time, it should be suitable for most workloads. If you have a request for an additional system dictionary to be installed, email <a href="meade.develop3r@gmail.com">meade.develop3r@gmail.com</a> and with a request or download the source at <a href="https://github.com/MeadeRobert/word_unscrambler">https://github.com/MeadeRobert/word_unscrambler</a>.
+    </form>
+    {% endautoescape %}
+  </body>
+</html>

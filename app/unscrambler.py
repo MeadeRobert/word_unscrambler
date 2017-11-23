@@ -13,8 +13,8 @@ def get_valid_words(words, lang):
   return valid_words
 
 
+# unscramble words in desired language and return dict of results
 def unscramble(letters, languages):
-  print languages
   # generate possible words with more then 2 chars O(n!) :(
   perm = [''.join(p) for p in permutations(letters)]
   words = set(perm)
