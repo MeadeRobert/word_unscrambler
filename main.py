@@ -29,11 +29,14 @@ def valid_words(words, lang):
 
 # run a thread to check against each language
 for lang in enchant.list_languages():
+  valid_words(words, lang)
+  '''
   try:
     print "Trying to start thread for", lang
     thread.start_new_thread(valid_words, (words, lang))
   except:
     print "Error: unable to start thread for", lang
+  '''
 
 # wait for threads
 while len(results.keys()) < len(enchant.list_languages()):
