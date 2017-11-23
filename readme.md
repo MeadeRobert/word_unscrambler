@@ -1,6 +1,6 @@
 # Universal Word Unscrambler
 
-Currently running on [rjm27trekkie.chickenkiller.com:5000](rjm27trekkie.chickenkiller.com:5000)
+Currently running on [http://rjm27trekkie.chickenkiller.com:5000/](http://rjm27trekkie.chickenkiller.com:5000/)
 
 ## About:
 
