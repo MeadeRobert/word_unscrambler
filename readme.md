@@ -1,5 +1,7 @@
 # Universal Word Unscrambler
 
+Currently running on [rjm27trekkie.chickenkiller.com:5000](rjm27trekkie.chickenkiller.com:5000)
+
 ## About:
 
 Universal Word Unscrambler is a web-app, written by Robert Meade [https://github.com/MeadeRobert](https://github.com/MeadeRobert), that aims to allow anyone to make sense of arbitrary letter combinations that may contain meaning obscured by a language of which they have no knowledge. The program tries to provide as many words or acronyms as it can with little to no concern for false positives. It is thus not a Scrabble word-finder, but a tool to decipher meaning from chaos. It will find sequences, 2-9 characters in length, that are valid spelling combinations in any of the languages specified that are installed on the system. These languages are given above by their ISO 639-1 Codes.
