@@ -1,7 +1,5 @@
 import sys
 import enchant
-import thread
-import time
 from itertools import permutations
 
 # generate possible words with more then 2 chars O(n!) :(
@@ -39,9 +37,11 @@ for lang in enchant.list_languages():
   '''
 
 # wait for threads
+'''
 while len(results.keys()) < len(enchant.list_languages()):
-  #print "Completed Languages:",set(results.keys()) & set(enchant.list_languages())
-  time.sleep(1)
+  print "Completed Languages:",set(results.keys()) & set(enchant.list_languages())
+  time.sleep(.25)  
+'''
 
 #print results
 for i in results.keys():
